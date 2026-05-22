@@ -2086,19 +2086,29 @@
 
   // Scroll reveals — hide-then-fade pattern. Content defaults to visible in CSS;
   // we add .observed here so JS hides it before the observer fades it in.
-  // If IntersectionObserver fails to fire, content stays visible.
+  // Double rAF between hiding and observing ensures the .observed state paints
+  // before the IntersectionObserver fires .in, so transitions actually animate.
+  // If IntersectionObserver fails, content stays visible (CSS failsafe).
   if ('IntersectionObserver' in window) {
     const reveals = document.querySelectorAll('.reveal');
     reveals.forEach(el => el.classList.add('observed'));
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('in'), i * 60);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
-    reveals.forEach(el => observer.observe(el));
+
+    // Force layout commit so .observed (opacity:0) paints before .in is added.
+    void document.body.offsetHeight;
+
+    // Defer observer setup across two animation frames so the hidden state
+    // is on screen for at least one paint before the IO callback can fire.
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => entry.target.classList.add('in'), i * 60);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+      reveals.forEach(el => observer.observe(el));
+    }));
 
     // Watchdog: any .observed element still not .in after 6s gets force-revealed.
     // Protects against tabs that load while backgrounded or observer hiccups.
