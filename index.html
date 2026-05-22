@@ -2067,10 +2067,12 @@
       }
     });
   }
-  inkDryingIn(document.getElementById('hero-headline'));
+  const heroHeadlineEl = document.getElementById('hero-headline');
+  if (heroHeadlineEl) inkDryingIn(heroHeadlineEl);
 
   // CTA + Mantra trigger on scroll
   const triggerInkDrying = (el, opts) => {
+    if (!el) return;
     opts = opts || {};
     const obs = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
