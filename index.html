@@ -8,6 +8,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Antonio:wght@700&family=Anton&family=Archivo+Black&family=Bevan&family=Big+Shoulders+Display:wght@400;700;900&family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Cinzel:wght@700&family=Cormorant+Garamond:ital,wght@1,500&family=Crimson+Pro:wght@700&family=Forum&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600;1,9..144,700&family=Italiana&family=JetBrains+Mono:wght@700&family=Jost:wght@700&family=Lora:ital,wght@1,500&family=Major+Mono+Display&family=Marcellus&family=Playfair+Display:wght@900&family=Space+Grotesk:wght@700&family=Yeseva+One&display=swap" rel="stylesheet">
+<!-- Set js-on class on <html> BEFORE first paint so partner cells render hidden
+     from the start. JS failure leaves the class absent and cells stay visible. -->
+<script>document.documentElement.classList.add('js-on');</script>
 <style>
   /* ============================================
      HAUS OF SÔS · Cream-Led · Awwwards-Ambition
@@ -1335,20 +1338,20 @@
     position: relative;
     transition: background 0.4s var(--ease);
   }
-  /* Parallax left-to-right fly-in. Overrides default .reveal vertical motion.
-     Failsafe state: no JS → cells visible in position. JS observed → cells
-     glide in from the left as they scroll into view. */
+  /* Parallax left-to-right fly-in.
+     Failsafe (no JS): cells render visible in place.
+     With JS (html.js-on): cells render hidden off-canvas from first paint,
+     then IntersectionObserver glides each one in as it scrolls into view. */
   .partner-cell.reveal {
     opacity: 1;
     transform: translateX(0);
-  }
-  .partner-cell.reveal.observed {
-    opacity: 0;
-    transform: translateX(-90px);
     transition: opacity 1.1s var(--ease), transform 1.3s var(--ease);
   }
-  .partner-cell.reveal.observed.in,
-  .partner-cell.reveal.in {
+  html.js-on .partner-cell.reveal {
+    opacity: 0;
+    transform: translateX(-90px);
+  }
+  html.js-on .partner-cell.reveal.in {
     opacity: 1;
     transform: translateX(0);
     transition-delay: var(--stagger, 0s);
