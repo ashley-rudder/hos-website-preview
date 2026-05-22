@@ -222,22 +222,22 @@
     opacity: 0;
     animation: gentleRise 1400ms var(--ease) 500ms forwards;
   }
-  /* Option 01 stacked-discipline headline */
+  /* Option 01 stacked-discipline headline — all lines flush left */
   .moment-statement .headline-stack {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 0.02em;
+    text-align: left;
   }
   .moment-statement .headline-stack .line {
     display: block;
     line-height: 1.02;
+    padding-left: 0;
   }
-  .moment-statement .headline-stack .line:nth-child(2) { padding-left: 0.5em; }
-  .moment-statement .headline-stack .line:nth-child(3) { padding-left: 0.18em; }
   .moment-statement .headline-stack .line.compound {
     font-size: 0.62em;
     color: var(--accent);
-    padding-left: 1.2em;
     margin-top: 0.18em;
     font-style: italic;
     font-weight: 500;
@@ -1298,9 +1298,10 @@
   <div class="meta-row">
     <div class="eyebrow">
       <span class="brand-asset"><span class="dot"></span>The Collective</span>
-      <span class="sub-tag">Built for brands that compound · LA + NY</span>
+      <span class="sub-tag">Built for Brand to&nbsp;compound</span>
     </div>
     <div class="meta-right">
+      <span>LA + NY</span>
       <span>2026.05</span>
       <span>Issue No. 01</span>
     </div>
