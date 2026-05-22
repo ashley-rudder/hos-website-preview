@@ -105,7 +105,7 @@
     display: inline-flex; align-items: center; gap: 14px;
     text-decoration: none; color: var(--ink);
   }
-  .nav-mark img { height: 22px; width: auto; display: block; }
+  .nav-mark img { height: 36px; width: auto; display: block; }
   .nav-mark .sub {
     font-family: var(--sans);
     font-weight: 400; font-size: 9px;
@@ -1335,9 +1335,13 @@
     position: relative;
     transition: background 0.4s var(--ease);
   }
-  /* Parallax left-to-right fly-in. Overrides default .reveal vertical motion
-     so each cell glides in from the left edge as it scrolls into view. */
-  .partner-cell.reveal { transform: translateX(-90px); }
+  /* Parallax left-to-right fly-in. Overrides default .reveal vertical motion.
+     Failsafe state: no JS → cells visible in position. JS observed → cells
+     glide in from the left as they scroll into view. */
+  .partner-cell.reveal {
+    opacity: 1;
+    transform: translateX(0);
+  }
   .partner-cell.reveal.observed {
     opacity: 0;
     transform: translateX(-90px);
@@ -1469,7 +1473,7 @@
 <!-- NAV -->
 <nav class="nav" id="nav">
   <a class="nav-mark" href="#" aria-label="HAUS OF SÔS">
-    <img src="assets/logos/hos-wordmark-dark-trimmed.png" alt="HAUS OF SÔS">
+    <img src="assets/logos/hos-logo-official.png" alt="HAUS OF SÔS">
     <span class="sub">EST. 2018</span>
   </a>
   <ul class="nav-links">
@@ -1675,12 +1679,13 @@
   </div>
 </section>
 
-<!-- MOMENT 04 · THE ROSTER — Logo bar + primary CTA in editorial-italic. -->
+<!-- MOMENT 04 · THE CTA — Editorial moment with primary path. Brand roster
+     handled below by the Trusted Partners gallery. -->
 <section class="moment-roster">
   <div class="moment-roster-inner">
-    <div class="label" style="grid-column: 1 / 3;"><span class="num">§ 02</span>Selected Brand Roster</div>
-    <div class="logos">
-      Clé de Peau Beauté<span class="sep">·</span>Shiseido<span class="sep">·</span>M·A·C<span class="sep">·</span>Burberry<span class="sep">·</span>Estée Lauder<span class="sep">·</span>Aerin Beauty<span class="sep">·</span>Bumble and bumble<span class="sep">·</span>REVOLVE<span class="sep">·</span>Dazed<span class="sep">·</span>Whalar<span class="sep">·</span>Fontainebleau Las Vegas<span class="sep">·</span>Mondrian South Beach<span class="sep">·</span>Mother Wolf<span class="sep">·</span>Bar Lis<span class="sep">·</span>Ten Five Hospitality<span class="sep">·</span>Desert 5 Spot<span class="sep">·</span>Virgin Hotels<span class="sep">·</span>Thompson Hollywood<span class="sep">·</span>Bodega Taqueria y Tequila<span class="sep">·</span>Sperry Top-Sider<span class="sep">·</span>Citizen News<span class="sep">·</span>The Chap Public House<span class="sep">·</span>Baia Beach Club<span class="sep">·</span>Tommie Hollywood<span class="sep">·</span>Martha Stewart<span class="sep">·</span>Akira The Don<span class="sep">·</span>Meaningwave
+    <div class="label" style="grid-column: 1 / 3;"><span class="num">§ 02</span>The&nbsp;Path&nbsp;Forward</div>
+    <div class="logos" style="font-size: clamp(28px, 3vw, 44px); line-height: 1.15; max-width: 720px;">
+      A working roster of operators, founders, and houses follows&nbsp;below.
     </div>
     <div class="cta-block">
       <div class="cta-eyebrow">↳ Primary Path</div>
