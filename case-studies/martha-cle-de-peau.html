@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Martha × Clé de Peau Beauté — "The Thirst Trap" · HAUS OF SÔS</title>
+<meta name="description" content="HAUS OF SÔS led the Clé de Peau Beauté × Martha Stewart launch. 3B impressions. 78M views. 222% above category benchmark. The #1 selling concealer in the U.S.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600;1,9..144,700&family=Big+Shoulders+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'Boing';
+    src: url('../fonts/Boing_Regular.otf') format('opentype');
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Boing';
+    src: url('../fonts/Boing_Bold.otf') format('opentype');
+    font-weight: 700; font-style: normal; font-display: swap;
+  }
+  :root {
+    --bg: #F3EDD8; --bg-deep: #ECE3CA; --surface: #EEE6CC;
+    --rule: #D8CFB3; --rule-soft: #E0D8BE;
+    --ink: #202221; --ink-soft: #4A4A48; --ink-muted: #7A7872;
+    --band: #1A1B1A; --band-text: #E8DFC4;
+    --display: 'Fraunces', Georgia, serif;
+    --sans: 'Boing', 'Inter', -apple-system, sans-serif;
+    --marquee: 'Big Shoulders Display', sans-serif;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  ::selection { background: var(--ink); color: var(--bg); }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: var(--sans); font-size: 16px; line-height: 1.5;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+    overflow-x: hidden; cursor: none;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none;
+    background-image:
+      radial-gradient(ellipse at 50% 30%, transparent 40%, rgba(20,15,10,0.06) 100%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.50 0 0 0 0 0.45 0 0 0 0 0.38 0 0 0 0.22 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    background-size: auto, 240px 240px;
+    mix-blend-mode: multiply; opacity: 0.45; z-index: 1;
+  }
+
+  /* Cursor */
+  .cursor {
+    position: fixed; top: 0; left: 0; width: 10px; height: 10px;
+    background: var(--ink); border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.25s var(--ease), height 0.25s var(--ease);
+    mix-blend-mode: difference;
+  }
+  .cursor.hover { width: 36px; height: 36px; }
+  a, button { cursor: none; }
+
+  /* NAV */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 28px 56px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: backdrop-filter 0.4s var(--ease), background 0.4s var(--ease), padding 0.4s var(--ease);
+  }
+  .nav.scrolled {
+    background: rgba(243, 237, 216, 0.85);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    padding: 18px 56px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .nav-mark {
+    display: inline-flex; align-items: center; gap: 14px;
+    text-decoration: none; color: var(--ink);
+  }
+  .nav-mark img { height: 22px; width: auto; display: block; }
+  .nav-mark .sub {
+    font-family: var(--sans); font-weight: 400; font-size: 9px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-muted);
+    padding-left: 14px; border-left: 1px solid var(--rule);
+  }
+  .nav-back {
+    font-family: var(--sans);
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .nav-back::before { content: "←"; font-size: 18px; }
+
+  /* HUD */
+  .frame-label {
+    position: fixed; z-index: 50;
+    font-family: var(--sans);
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-muted); pointer-events: none;
+  }
+  .fl-tl { top: 100px; left: 24px; transform: rotate(-90deg); transform-origin: left top; }
+  .fl-tr { top: 100px; right: 24px; transform: rotate(90deg); transform-origin: right top; }
+  .fl-bl { bottom: 24px; left: 56px; }
+  .fl-br { bottom: 24px; right: 56px; }
+
+  /* HERO */
+  .case-hero {
+    padding: 160px 80px 80px;
+    position: relative;
+    z-index: 2;
+  }
+  .case-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+    margin-bottom: 56px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .case-meta .item .label {
+    display: block;
+    font-family: var(--sans);
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 8px;
+  }
+  .case-meta .item .value {
+    font-family: var(--display);
+    font-style: italic; font-weight: 500;
+    font-size: 17px;
+    color: var(--ink);
+  }
+  .case-eyebrow {
+    font-family: var(--sans);
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 32px;
+  }
+  .case-eyebrow .dot {
+    display: inline-block; width: 6px; height: 6px;
+    background: var(--ink); border-radius: 50%;
+    margin-right: 12px; vertical-align: middle;
+  }
+  .case-headline {
+    font-family: var(--display);
+    font-style: italic; font-weight: 400;
+    font-size: clamp(48px, 7.5vw, 116px);
+    line-height: 0.95; color: var(--ink);
+    letter-spacing: -0.02em;
+    max-width: 1320px;
+    margin-bottom: 60px;
+  }
+
+  /* HERO IMAGE */
+  .case-image {
+    position: relative;
+    aspect-ratio: 21/9;
+    margin: 0 -80px;
+    background: var(--ink);
+    overflow: hidden;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+  }
+  .case-image .visual {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(135deg, rgba(20,30,40,0.18) 0%, rgba(80,40,30,0.32) 50%, rgba(180,120,80,0.18) 100%),
+      radial-gradient(ellipse at 30% 40%, rgba(220,180,140,0.4) 0%, rgba(40,30,20,0.7) 80%);
+  }
+  .case-image::after {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.2 0 0 0 0 0.15 0 0 0 0 0.1 0 0 0 0.4 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    mix-blend-mode: multiply; opacity: 0.6;
+  }
+  .case-image .corner-frame {
+    position: absolute; top: 24px; left: 24px;
+    font-family: var(--sans);
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--band-text);
+    padding: 8px 14px;
+    border: 1px solid var(--band-text);
+  }
+  .case-image .corner-frame.br {
+    top: auto; bottom: 24px; left: auto; right: 24px;
+    border: none;
+    padding: 0;
+    opacity: 0.7;
+  }
+
+  /* MARQUEE NUMBERS — Big Shoulders Display, gallery scale */
+  .results-marquee {
+    background: var(--band);
+    color: var(--band-text);
+    padding: 100px 80px;
+    position: relative; z-index: 2;
+    overflow: hidden;
+  }
+  .results-marquee .label {
+    font-family: var(--sans);
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--band-text);
+    opacity: 0.7;
+    margin-bottom: 48px;
+  }
+  .results-marquee-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    align-items: end;
+  }
+  .results-marquee .stat .n {
+    font-family: var(--marquee);
+    font-weight: 700;
+    font-size: clamp(72px, 11vw, 180px);
+    line-height: 0.85;
+    color: var(--band-text);
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+  }
+  .results-marquee .stat .l {
+    font-family: var(--sans);
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--band-text);
+    opacity: 0.7;
+    line-height: 1.4;
+  }
+  .results-marquee .timing {
+    margin-top: 60px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(232, 223, 196, 0.2);
+    font-family: var(--sans);
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--band-text);
+    opacity: 0.6;
+  }
+
+  /* CONTENT SECTIONS */
+  .case-section {
+    padding: 140px 80px;
+    position: relative; z-index: 2;
+  }
+  .case-section .label {
+    font-family: var(--sans);
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 32px;
+  }
+  .case-section .label .num { color: var(--ink); margin-right: 14px; }
+  .case-section h2 {
+    font-family: var(--display);
+    font-style: italic; font-weight: 400;
+    font-size: clamp(40px, 5.5vw, 80px);
+    line-height: 1; color: var(--ink);
+    letter-spacing: -0.015em;
+    max-width: 1320px;
+    margin-bottom: 56px;
+  }
+  .case-body {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .case-body .lead {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 18px; line-height: 1.5;
+    color: var(--ink-muted);
+    border-left: 1px solid var(--rule);
+    padding-left: 32px;
+  }
+  .case-body .copy {
+    font-family: var(--display);
+    font-style: italic; font-weight: 400;
+    font-size: clamp(20px, 1.8vw, 26px);
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 900px;
+  }
+  .case-body .copy p { margin-bottom: 28px; }
+  .case-body .copy p:last-child { margin-bottom: 0; }
+
+  /* RESULTS DETAIL LIST */
+  .results-list {
+    margin-top: 80px;
+    border-top: 1px solid var(--rule);
+  }
+  .results-list .item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 40px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .results-list .item .num {
+    font-family: var(--marquee);
+    font-weight: 700;
+    font-size: clamp(24px, 2.4vw, 32px);
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .results-list .item .desc {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(18px, 1.6vw, 22px);
+    line-height: 1.4;
+    color: var(--ink-soft);
+  }
+
+  /* RECOGNITION */
+  .recognition {
+    background: var(--bg-deep);
+    padding: 120px 80px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    position: relative; z-index: 2;
+  }
+  .recognition .label {
+    font-family: var(--sans);
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 32px;
+  }
+  .recognition h2 {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(32px, 4vw, 56px);
+    line-height: 1.1;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 40px;
+    max-width: 1000px;
+  }
+  .recognition .awards {
+    display: flex; flex-wrap: wrap;
+    gap: 14px 28px;
+    font-family: var(--sans);
+    font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink);
+  }
+  .recognition .awards span::after {
+    content: " ·";
+    color: var(--ink-muted);
+    margin-left: 28px;
+  }
+  .recognition .awards span:last-child::after { content: ""; }
+
+  /* NEXT / FOOTER */
+  .next-case {
+    padding: 140px 80px;
+    text-align: center;
+    position: relative; z-index: 2;
+  }
+  .next-case .label {
+    font-family: var(--sans);
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 32px;
+  }
+  .next-case h2 {
+    font-family: var(--display);
+    font-style: italic; font-weight: 400;
+    font-size: clamp(40px, 6vw, 88px);
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 40px;
+  }
+  .next-case a {
+    display: inline-flex; align-items: center; gap: 16px;
+    font-family: var(--sans);
+    font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink); text-decoration: none;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--ink);
+    transition: gap 0.4s var(--ease);
+  }
+  .next-case a:hover { gap: 24px; }
+
+  .footer {
+    padding: 60px 80px 40px;
+    border-top: 1px solid var(--rule);
+    position: relative; z-index: 2;
+  }
+  .footer-top {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 24px;
+  }
+  .footer-trademark {
+    font-family: var(--display);
+    font-style: italic; font-size: 18px;
+    color: var(--ink-soft);
+  }
+  .footer-trademark .ethos {
+    font-family: var(--sans); font-style: normal;
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-left: 14px; padding-left: 14px;
+    border-left: 1px solid var(--rule);
+  }
+  .footer-bottom {
+    display: flex; justify-content: space-between;
+    font-family: var(--sans);
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .footer-bottom a { color: var(--ink); text-decoration: none; }
+
+  /* REVEAL */
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 1200ms var(--ease), transform 1200ms var(--ease);
+  }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .ink-drying span span {
+    display: inline-block; opacity: 0;
+    filter: blur(8px); transform: translateY(0.12em);
+    animation: inkDry 1200ms var(--ease) forwards;
+  }
+  @keyframes inkDry { to { opacity: 1; filter: blur(0); transform: translateY(0); } }
+
+  @media (max-width: 900px) {
+    .case-hero { padding: 120px 32px 60px; }
+    .case-image { margin: 0 -32px; aspect-ratio: 4/3; }
+    .case-meta { grid-template-columns: 1fr; gap: 20px; }
+    .results-marquee, .case-section, .recognition, .next-case, .footer { padding: 80px 32px; }
+    .results-marquee-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .case-body { grid-template-columns: 1fr; gap: 40px; }
+    .case-body .lead { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 24px; }
+    .results-list .item { grid-template-columns: 80px 1fr; }
+    .fl-tl, .fl-tr, .fl-bl, .fl-br { display: none; }
+    .nav { padding: 20px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<!-- HUD FRAME LABELS -->
+<div class="frame-label fl-tl">HAUS OF SÔS · CASE STUDY 01</div>
+<div class="frame-label fl-tr">LUXURY · CULTURE · CONTENT</div>
+<div class="frame-label fl-bl">CLÉ DE PEAU × MARTHA</div>
+<div class="frame-label fl-br">FILM · 14 INTERNATIONAL WINS</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a class="nav-mark" href="../index.html" aria-label="HAUS OF SÔS">
+    <img src="../assets/logos/hos-wordmark-dark-trimmed.png" alt="HAUS OF SÔS">
+    <span class="sub">EST. 2018</span>
+  </a>
+  <a class="nav-back" href="../index.html#work">Back to Work</a>
+</nav>
+
+<!-- HERO -->
+<section class="case-hero">
+  <div class="case-meta">
+    <div class="item">
+      <span class="label">Client</span>
+      <span class="value">Clé de Peau Beauté</span>
+    </div>
+    <div class="item">
+      <span class="label">Year</span>
+      <span class="value">2022</span>
+    </div>
+    <div class="item">
+      <span class="label">Engagement</span>
+      <span class="value">Celebrity × Luxury Beauty · Content · Strategy · Production</span>
+    </div>
+  </div>
+
+  <div class="case-eyebrow"><span class="dot"></span>Martha × Clé de Peau Beauté · "The Thirst Trap"</div>
+  <h1 class="case-headline ink-drying" id="case-headline">She was already iconic. We just let the internet catch up.</h1>
+
+  <div class="case-image">
+    <div class="visual"></div>
+    <div class="corner-frame">CLÉ DE PEAU × MARTHA · THE THIRST TRAP</div>
+    <div class="corner-frame br">FRAME · 001 / 14</div>
+  </div>
+</section>
+
+<!-- MARQUEE NUMBERS -->
+<section class="results-marquee">
+  <div class="label reveal">↳ The Outcomes · February 2022</div>
+  <div class="results-marquee-grid">
+    <div class="stat reveal"><div class="n">3B+</div><div class="l">Earned media impressions<br>across 43 placements</div></div>
+    <div class="stat reveal"><div class="n">78M</div><div class="l">Total views<br>TikTok + Instagram</div></div>
+    <div class="stat reveal"><div class="n">222%</div><div class="l">Above beauty category benchmark<br>brand lift (Kantar)</div></div>
+    <div class="stat reveal"><div class="n">#1</div><div class="l">Selling concealer in category<br>February 2022</div></div>
+  </div>
+  <div class="timing reveal">5 million views in the first five days · The brand's most awarded campaign in its history · The most successful U.S. market campaign Clé de Peau Beauté has ever run</div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="case-section">
+  <div class="label reveal"><span class="num">§ 01</span>Overview</div>
+  <div class="case-body">
+    <div class="lead reveal">A prestige Japanese luxury brand had never touched TikTok. The stakes were precise.</div>
+    <div class="copy reveal">
+      <p>Clé de Peau Beauté had never touched TikTok. The stakes were precise: enter the platform without diluting a prestige legacy built over decades. The brief asked for a new generation of consumers. The real question was whether a brand synonymous with Japanese luxury could meet Gen Z on their terms without flinching.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHT -->
+<section class="case-section" style="background: var(--bg-deep); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);">
+  <div class="label reveal"><span class="num">§ 02</span>The Insight</div>
+  <div class="case-body">
+    <div class="lead reveal">The audience wasn't waiting to be introduced. They were already obsessed.</div>
+    <div class="copy reveal">
+      <p>Martha Stewart had already gone viral on her own terms: a thirst trap selfie that stopped every feed it entered. <em>"Gen Z loves a grey fox"</em> was a top search term. The audience wasn't waiting to be introduced to her. They were already obsessed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXECUTION -->
+<section class="case-section">
+  <div class="label reveal"><span class="num">§ 03</span>The Execution</div>
+  <div class="case-body">
+    <div class="lead reveal">A five-part TikTok-first series. Every piece felt discovered, not placed.</div>
+    <div class="copy reveal">
+      <p>Ashley worked directly with Martha on strategy and copy to develop a five-part TikTok-first content series built entirely around platform-native formats: ASMR, beauty tutorials, clone trails, trending transitions.</p>
+      <p>Advertising best practices were embedded invisibly within in-app features, making every piece feel discovered rather than placed. Scripts were pressure-tested with Gen Z focus groups before production.</p>
+      <p>The <em>"Aunty"</em> archetype ran through every piece as the campaign's emotional spine: aspirational, irreverent, impossible to scroll past.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS DETAIL -->
+<section class="case-section" style="background: var(--bg-deep); border-top: 1px solid var(--rule);">
+  <div class="label reveal"><span class="num">§ 04</span>The Results in Detail</div>
+  <div class="results-list">
+    <div class="item reveal"><span class="num">78M</span><span class="desc">Total views across TikTok and Instagram</span></div>
+    <div class="item reveal"><span class="num">5M</span><span class="desc">Views in the first five days</span></div>
+    <div class="item reveal"><span class="num">222%</span><span class="desc">Above beauty category benchmarks in brand lift (Kantar)</span></div>
+    <div class="item reveal"><span class="num">3B+</span><span class="desc">Earned media impressions across 43 press placements</span></div>
+    <div class="item reveal"><span class="num">#1</span><span class="desc">Selling concealer in category, February 2022</span></div>
+    <div class="item reveal"><span class="num">+10ppt</span><span class="desc">Above the total prestige makeup market in sales growth (NPD)</span></div>
+    <div class="item reveal"><span class="num">+3ppt</span><span class="desc">Above the total prestige beauty market across the full business (NPD)</span></div>
+    <div class="item reveal"><span class="num">#1</span><span class="desc">Most-viewed landing page of all time on cledepeaubeaute.com</span></div>
+  </div>
+</section>
+
+<!-- RECOGNITION -->
+<section class="recognition">
+  <div class="label reveal">↳ Recognition · 12+ International Honors</div>
+  <h2 class="reveal">The most awarded campaign in Clé de Peau Beauté's history.</h2>
+  <div class="awards reveal">
+    <span>Cannes Lions</span>
+    <span>Influencer Marketing Awards · Game Changer (Silver)</span>
+    <span>Influencer Marketing Awards · Best ROI</span>
+    <span>Shorty Awards</span>
+    <span>Clio</span>
+  </div>
+</section>
+
+<!-- NEXT CASE -->
+<section class="next-case">
+  <div class="label reveal">↳ Continue</div>
+  <h2 class="reveal">A brand built on restriction learned to sing about joy.</h2>
+  <a href="lactaid-la-la.html">View Lactaid · "La La Lactaid" →</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-trademark">Always Be Saucy™ <span class="ethos">The creative ethos that powers HAUS OF SÔS™</span></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 HAUS OF SÔS · A Super Saucy LLC Company</span>
+    <span><a href="mailto:hello@hausofsos.com">hello@hausofsos.com</a></span>
+  </div>
+</footer>
+
+<script>
+  // Cursor
+  const cursor = document.getElementById('cursor');
+  let cursorX = 0, cursorY = 0, mouseX = 0, mouseY = 0;
+  document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+  function animateCursor() {
+    cursorX += (mouseX - cursorX) * 0.2;
+    cursorY += (mouseY - cursorY) * 0.2;
+    cursor.style.transform = 'translate(' + cursorX + 'px, ' + cursorY + 'px) translate(-50%, -50%)';
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+  });
+
+  // Ink Drying In
+  function inkDryingIn(el, delayBase, startDelay) {
+    delayBase = delayBase || 30;
+    startDelay = startDelay || 200;
+    const text = el.textContent;
+    while (el.firstChild) el.removeChild(el.firstChild);
+    const words = text.split(' ');
+    let charIndex = 0;
+    words.forEach((word, wordIdx) => {
+      const wordSpan = document.createElement('span');
+      wordSpan.style.display = 'inline-block';
+      wordSpan.style.whiteSpace = 'nowrap';
+      Array.from(word).forEach((char) => {
+        const span = document.createElement('span');
+        span.textContent = char;
+        span.style.animationDelay = (startDelay + charIndex * delayBase) + 'ms';
+        wordSpan.appendChild(span);
+        charIndex++;
+      });
+      el.appendChild(wordSpan);
+      if (wordIdx < words.length - 1) {
+        el.appendChild(document.createTextNode(' '));
+        charIndex++;
+      }
+    });
+  }
+  inkDryingIn(document.getElementById('case-headline'), 20, 200);
+
+  // Reveals
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('in'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav scroll state
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+</script>
+
+</body>
+</html>

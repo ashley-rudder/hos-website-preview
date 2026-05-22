@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAUS OF SÔS — The Architects of Cultural Relevance</title>
+<meta name="description" content="HAUS OF SÔS builds the creative systems behind premium brands that intend to set the standard for their category. Brand identity. Campaign worlds. Cinematic content. Creator-led infrastructure.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600;1,9..144,700&family=Big+Shoulders+Display:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  /* ============================================
+     HAUS OF SÔS · Cream-Led · Awwwards-Ambition
+     V6 copy. Boing for nav wordmark only.
+     ============================================ */
+
+  @font-face {
+    font-family: 'Boing';
+    src: url('fonts/Boing_Regular.otf') format('opentype');
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Boing';
+    src: url('fonts/Boing_Bold.otf') format('opentype');
+    font-weight: 700; font-style: normal; font-display: swap;
+  }
+
+  :root {
+    --bg: #F3EDD8;
+    --bg-deep: #ECE3CA;
+    --surface: #EEE6CC;
+    --rule: #D8CFB3;
+    --rule-soft: #E0D8BE;
+    --ink: #202221;
+    --ink-soft: #4A4A48;
+    --ink-muted: #7A7872;
+    --band: #1A1B1A;
+    --band-text: #E8DFC4;
+    --accent: #C2410C; /* CDOS burnt orange — used SPARINGLY on HOS per spec */
+
+    --display: 'Fraunces', Georgia, serif;
+    --sans: 'Boing', 'Inter', -apple-system, sans-serif;
+    --marquee: 'Big Shoulders Display', sans-serif;
+
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --t-slow: 1200ms;
+    --t-med: 800ms;
+    --t-fast: 400ms;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  ::selection { background: var(--ink); color: var(--bg); }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Paper grain */
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none;
+    background-image:
+      radial-gradient(ellipse at 50% 30%, transparent 40%, rgba(20,15,10,0.06) 100%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.50 0 0 0 0 0.45 0 0 0 0 0.38 0 0 0 0.22 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    background-size: auto, 240px 240px;
+    mix-blend-mode: multiply; opacity: 0.45; z-index: 1;
+  }
+
+  /* Cursor */
+  .cursor {
+    position: fixed; top: 0; left: 0;
+    width: 10px; height: 10px;
+    background: var(--ink);
+    border-radius: 50%;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.25s var(--ease), height 0.25s var(--ease);
+    mix-blend-mode: difference;
+  }
+  .cursor.hover { width: 36px; height: 36px; }
+  a, button { cursor: none; }
+
+  /* NAV */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 28px 56px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: backdrop-filter var(--t-fast) var(--ease), background var(--t-fast) var(--ease), padding var(--t-fast) var(--ease);
+  }
+  .nav.scrolled {
+    background: rgba(243, 237, 216, 0.85);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    padding: 18px 56px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .nav-mark {
+    display: inline-flex; align-items: center; gap: 14px;
+    text-decoration: none; color: var(--ink);
+  }
+  .nav-mark img { height: 22px; width: auto; display: block; }
+  .nav-mark .sub {
+    font-family: var(--sans);
+    font-weight: 400; font-size: 9px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-muted);
+    padding-left: 14px;
+    border-left: 1px solid var(--rule);
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-family: var(--sans);
+    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink); text-decoration: none;
+    position: relative; padding-bottom: 4px;
+  }
+  .nav-links a::after {
+    content: ""; position: absolute; left: 0; bottom: 0;
+    width: 0; height: 1px; background: var(--ink);
+    transition: width var(--t-fast) var(--ease);
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* HUD frame labels */
+  .frame-label {
+    position: fixed; z-index: 50;
+    font-family: var(--sans);
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-muted);
+    pointer-events: none;
+  }
+  .fl-tl { top: 100px; left: 24px; transform: rotate(-90deg); transform-origin: left top; }
+  .fl-tr { top: 100px; right: 24px; transform: rotate(90deg); transform-origin: right top; }
+  .fl-bl { bottom: 24px; left: 56px; }
+  .fl-br { bottom: 24px; right: 56px; }
+
+  /* ============================================
+     SPLASH · Editorial Moments architecture
+     Each element earns its own gallery viewport.
+     Spec copy locked; layout elevated.
+     ============================================ */
+
+  .ink-drying span span {
+    display: inline-block; opacity: 0;
+    filter: blur(8px); transform: translateY(0.12em);
+    animation: inkDry 1200ms var(--ease) forwards;
+  }
+  @keyframes inkDry { to { opacity: 1; filter: blur(0); transform: translateY(0); } }
+  @keyframes gentleRise { to { opacity: 1; transform: translateY(0); } }
+
+  /* Moment 01 · The Statement — asymmetric editorial headline */
+  .moment-statement {
+    min-height: 100vh;
+    padding: 160px 80px 80px;
+    display: grid;
+    grid-template-columns: 1fr 11fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: 0;
+    position: relative; z-index: 2;
+  }
+  .moment-statement .meta-row {
+    grid-column: 2 / 3; grid-row: 1 / 2;
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding-bottom: 60px;
+    border-bottom: 1px solid var(--rule);
+    opacity: 0;
+    animation: gentleRise 800ms var(--ease) 200ms forwards;
+  }
+  .moment-statement .eyebrow {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .moment-statement .eyebrow .brand-asset {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--accent);
+    letter-spacing: -0.005em;
+    display: inline-flex; align-items: center;
+  }
+  .moment-statement .eyebrow .brand-asset .dot {
+    display: inline-block; width: 7px; height: 7px;
+    background: var(--accent); border-radius: 50%;
+    margin-right: 16px;
+  }
+  .moment-statement .eyebrow .sub-tag {
+    font-family: var(--sans);
+    font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 500;
+    padding-left: 23px; /* aligns with brand-asset content (dot + margin) */
+  }
+  .moment-statement .meta-right {
+    font-family: var(--sans);
+    font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-muted);
+    display: flex; gap: 28px;
+    align-self: flex-end;
+    padding-bottom: 4px;
+  }
+  .moment-statement .headline {
+    grid-column: 2 / 3; grid-row: 2 / 3;
+    font-family: var(--display);
+    font-style: italic; font-weight: 400;
+    font-size: clamp(56px, 8vw, 132px);
+    line-height: 1.0;
+    color: var(--ink);
+    letter-spacing: -0.025em;
+    align-self: center;
+    padding: 80px 0;
+    max-width: 1640px;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    opacity: 0;
+    animation: gentleRise 1400ms var(--ease) 500ms forwards;
+  }
+  .moment-statement .footer-row {
+    grid-column: 2 / 3; grid-row: 3 / 4;
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-muted);
+    opacity: 0;
+    animation: gentleRise 800ms var(--ease) 1400ms forwards;
+  }
+  .moment-statement .footer-row .scroll-indicator {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .moment-statement .footer-row .scroll-indicator::after {
+    content: ""; width: 40px; height: 1px;
+    background: var(--ink-muted);
+    animation: scrollLine 2.4s var(--ease) infinite;
+    transform-origin: left center;
+  }
+  @keyframes scrollLine {
+    0%,100% { transform: scaleX(0.4); opacity: 0.4; }
+    50% { transform: scaleX(1); opacity: 1; }
+  }
+
+  /* Moment 02 · The Receipt — full-bleed cinematic video */
+  .moment-receipt {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+    background: var(--ink);
+  }
+  .moment-receipt video.visual {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .moment-receipt::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(20,18,15,0.45) 0%, rgba(20,18,15,0.15) 30%, rgba(20,18,15,0.15) 70%, rgba(20,18,15,0.55) 100%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.2 0 0 0 0 0.15 0 0 0 0 0.1 0 0 0 0.18 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    mix-blend-mode: multiply;
+    pointer-events: none;
+  }
+  .moment-receipt .frame-top {
+    position: absolute; top: 40px; left: 80px; right: 80px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: var(--sans);
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--band-text);
+    opacity: 0.85;
+  }
+  .moment-receipt .frame-top .left-tag {
+    border: 1px solid var(--band-text);
+    padding: 10px 14px;
+  }
+  .moment-receipt .frame-bottom {
+    position: absolute; bottom: 56px; left: 80px; right: 80px;
+    display: flex; justify-content: space-between; align-items: end;
+  }
+  .moment-receipt .proof {
+    font-family: var(--sans);
+    font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--band-text);
+    opacity: 0.9;
+  }
+  .moment-receipt .frame-folio {
+    font-family: var(--sans);
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--band-text);
+    opacity: 0.6;
+  }
+
+  /* Moment 03 · The Numbers — cream gallery moment */
+  .moment-numbers {
+    min-height: 100vh;
+    padding: 160px 80px;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    position: relative; z-index: 2;
+  }
+  .moment-numbers .label {
+    font-family: var(--sans);
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 80px;
+    max-width: 1640px; width: 100%; margin-left: auto; margin-right: auto;
+  }
+  .moment-numbers .label .num { color: var(--accent); margin-right: 16px; font-weight: 700; }
+  .moment-numbers-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 60px;
+    max-width: 1640px; width: 100%; margin: 0 auto;
+    border-top: 1px solid var(--rule);
+    padding-top: 60px;
+  }
+  .moment-numbers .stat .n {
+    font-family: var(--marquee);
+    font-weight: 700;
+    font-size: clamp(96px, 12vw, 200px);
+    line-height: 0.82;
+    color: var(--ink);
+    letter-spacing: -0.035em;
+    margin-bottom: 24px;
+    display: block;
+  }
+  .moment-numbers .stat .l {
+    font-family: var(--display);
+    font-style: italic; font-weight: 400;
+    font-size: 16px; line-height: 1.4;
+    color: var(--ink-soft);
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+  }
+  .moment-numbers .closer {
+    margin-top: 80px;
+    max-width: 1640px; width: 100%; margin-left: auto; margin-right: auto;
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+  }
+  .moment-numbers .closer .credit {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink-soft);
+  }
+  .moment-numbers .closer .source {
+    font-family: var(--sans);
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  /* Moment 04 · The Roster — logo bar + CTA */
+  .moment-roster {
+    padding: 140px 80px;
+    position: relative; z-index: 2;
+    background: var(--bg-deep);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .moment-roster-inner {
+    max-width: 1640px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: end;
+  }
+  .moment-roster .label {
+    font-family: var(--sans);
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 32px;
+    grid-column: 1 / 3;
+  }
+  .moment-roster .label .num { color: var(--accent); margin-right: 16px; font-weight: 700; }
+  .moment-roster .logos {
+    font-family: var(--display);
+    font-style: italic; font-weight: 500;
+    font-size: clamp(22px, 2.4vw, 32px);
+    line-height: 1.35;
+    color: var(--ink);
+    letter-spacing: 0;
+  }
+  .moment-roster .logos .sep { color: var(--accent); margin: 0 10px; }
+  .moment-roster .cta-block {
+    text-align: right;
+  }
+  .moment-roster .cta-eyebrow {
+    font-family: var(--sans);
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 16px;
+  }
+  .moment-roster .cta {
+    display: inline-flex; align-items: center; gap: 16px;
+    font-family: var(--display);
+    font-style: italic; font-weight: 500;
+    font-size: clamp(32px, 3.6vw, 52px);
+    color: var(--ink); text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 6px;
+    transition: gap var(--t-fast) var(--ease);
+    letter-spacing: -0.01em;
+  }
+  .moment-roster .cta:hover { gap: 28px; }
+  .moment-roster .cta .arrow { font-size: 0.6em; }
+
+  /* Splash Edition Footer · final band before chapter break */
+  .splash-edition {
+    padding: 32px 80px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--sans);
+    font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
+    position: relative; z-index: 2;
+    border-bottom: 1px solid var(--rule);
+  }
+  .splash-edition .mandate {
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .splash-edition .edition {
+    color: var(--ink-muted);
+  }
+
+  .scroll-prompt {
+    position: absolute; bottom: 40px; right: 80px;
+    font-family: var(--sans);
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-muted);
+    display: flex; align-items: center; gap: 12px;
+    opacity: 0; animation: pulseIn 800ms var(--ease) 1800ms forwards;
+  }
+  .scroll-prompt::after {
+    content: ""; width: 40px; height: 1px; background: var(--ink-muted);
+    animation: scrollLine 2.4s var(--ease) infinite; transform-origin: left center;
+  }
+  @keyframes pulseIn { to { opacity: 1; } }
+  @keyframes scrollLine { 0%,100% { transform: scaleX(0.4); opacity: 0.5; } 50% { transform: scaleX(1); opacity: 1; } }
+
+  /* CHAPTER BREAK — Stillness moment, replaces the scrolling ticker.
+     Gallery scale, no animation, paper-grain overlay, scroll-triggered fade. */
+  .chapter-break {
+    padding: 180px 80px;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    text-align: center;
+  }
+  .chapter-break.dark {
+    background: var(--band);
+    color: var(--band-text);
+  }
+  .chapter-break.cream {
+    background: var(--bg-deep);
+    color: var(--ink);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .chapter-break .eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-bottom: 36px;
+    opacity: 0.7;
+  }
+  .chapter-break.dark .eyebrow { color: var(--band-text); }
+  .chapter-break.cream .eyebrow { color: var(--ink-muted); }
+  .chapter-break .mantra {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(72px, 11vw, 168px);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.06em;
+    padding: 0.15em 0;
+  }
+  .chapter-break .mantra .line { display: block; padding: 0.05em 0; }
+  .chapter-break .mantra .line:nth-child(2) {
+    margin-left: 0.4em; /* slight asymmetric offset, gallery feel */
+  }
+  .chapter-break.dark .mantra { color: var(--band-text); }
+  .chapter-break.cream .mantra { color: var(--ink); }
+  .chapter-break .sub {
+    margin-top: 40px;
+    padding-top: 24px;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    opacity: 0.65;
+  }
+  .chapter-break .sub::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 48px;
+    height: 1px;
+  }
+  .chapter-break.dark .sub { color: var(--band-text); }
+  .chapter-break.dark .sub::before { background: var(--band-text); }
+  .chapter-break.cream .sub { color: var(--ink); }
+  .chapter-break.cream .sub::before { background: var(--ink); }
+  /* Subtle paper-grain texture on dark chapter break too */
+  .chapter-break.dark::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.9 0 0 0 0 0.85 0 0 0 0 0.75 0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    mix-blend-mode: overlay;
+    opacity: 0.5;
+  }
+
+  /* SECTION SCAFFOLD */
+  .section {
+    padding: 160px 80px;
+    position: relative; z-index: 2;
+  }
+  .section-label {
+    font-family: var(--sans);
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 32px;
+  }
+  .section-label .num { color: var(--ink); margin-right: 14px; }
+
+  /* PHILOSOPHY (DNA) */
+  .philosophy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px 56px;
+    margin-top: 40px;
+  }
+  .philosophy-pillar {
+    border-top: 1px solid var(--rule);
+    padding-top: 28px;
+  }
+  .philosophy-pillar .num {
+    font-family: var(--sans);
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 16px;
+    display: block;
+  }
+  .philosophy-pillar h3 {
+    font-family: var(--display);
+    font-style: italic; font-weight: 500;
+    font-size: clamp(28px, 3.6vw, 44px);
+    line-height: 1.05; color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 18px;
+  }
+  .philosophy-pillar p {
+    font-size: 16px; line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 540px;
+    margin-bottom: 18px;
+  }
+  .philosophy-pillar .value {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink);
+    padding-top: 14px;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .philosophy-pillar .value::before {
+    content: "The Value · ";
+    font-family: var(--sans);
+    font-style: normal;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-right: 6px;
+  }
+
+  /* CAPABILITIES */
+  .capabilities-list {
+    margin-top: 40px;
+  }
+  .capability {
+    display: grid;
+    grid-template-columns: 100px 1fr 2fr;
+    gap: 40px;
+    padding: 36px 0;
+    border-top: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .capability:last-child { border-bottom: 1px solid var(--rule); }
+  .capability .num {
+    font-family: var(--sans);
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .capability h3 {
+    font-family: var(--display);
+    font-style: italic; font-weight: 500;
+    font-size: clamp(22px, 2.6vw, 34px);
+    line-height: 1.1; color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .capability p {
+    font-size: 15px; line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 560px;
+  }
+
+  /* WORK */
+  .work-intro {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(22px, 2.2vw, 28px);
+    line-height: 1.4;
+    color: var(--ink-soft);
+    max-width: 880px;
+    margin-bottom: 80px;
+  }
+  .work-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px 48px;
+  }
+  .work-subsection {
+    grid-column: 1 / -1;
+    display: flex; align-items: baseline; justify-content: space-between;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--rule);
+    margin-top: 24px;
+  }
+  .work-subsection:first-of-type { margin-top: 0; }
+  .work-subsection .sub-eyebrow {
+    font-family: var(--sans);
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    display: flex; gap: 14px; align-items: center;
+  }
+  .work-subsection .sub-eyebrow .num {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--accent);
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 500;
+  }
+  .work-subsection .sub-title {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(22px, 2.2vw, 30px);
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    text-align: right;
+    max-width: 540px;
+  }
+  .work-card {
+    text-decoration: none; color: inherit;
+    display: flex; flex-direction: column;
+    transition: opacity var(--t-med) var(--ease);
+  }
+  .work-card-image {
+    aspect-ratio: 4/5;
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--ink);
+    margin-bottom: 24px;
+  }
+  /* Design-style cards: keep image visible at full bleed, no gradient overlay */
+  .work-card.design .work-card-image {
+    aspect-ratio: 9/16;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+  }
+  .work-card.design .work-card-image .visual {
+    background-size: cover; background-position: center;
+  }
+  /* Video-style cards: motion hint glyph */
+  .work-card.video .work-card-image::after {
+    content: "";
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px; height: 56px;
+    border: 1.5px solid rgba(232,223,196,0.85);
+    border-radius: 50%;
+    background: rgba(20,20,20,0.25);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    transition: transform var(--t-med) var(--ease), background var(--t-med) var(--ease);
+    z-index: 2;
+  }
+  .work-card.video .work-card-image::before {
+    content: "";
+    position: absolute; top: 50%; left: calc(50% + 2px);
+    transform: translate(-50%, -50%);
+    width: 0; height: 0;
+    border-left: 14px solid rgba(232,223,196,0.95);
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    z-index: 3;
+    transition: border-left-color var(--t-med) var(--ease);
+  }
+  .work-card.video:hover .work-card-image::after { background: rgba(20,20,20,0.45); transform: translate(-50%, -50%) scale(1.06); }
+  .work-card.video .work-card-meta::before {
+    content: "Cinematic"; color: var(--accent);
+    margin-right: 6px; font-weight: 700;
+  }
+  .work-card.design .work-card-meta::before {
+    content: "Design Studio"; color: var(--accent);
+    margin-right: 6px; font-weight: 700;
+  }
+  .work-card-image .visual {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    transition: transform 1500ms var(--ease);
+  }
+  .work-card:hover .work-card-image .visual { transform: scale(1.04); }
+  .work-card-image .corner {
+    position: absolute; top: 16px; left: 16px;
+    font-family: var(--sans);
+    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--band-text);
+    padding: 6px 10px;
+    border: 1px solid rgba(232, 223, 196, 0.6);
+    background: rgba(20, 20, 20, 0.4);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  }
+  .work-card-eyebrow {
+    font-family: var(--sans);
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 10px;
+  }
+  .work-card-title {
+    font-family: var(--display);
+    font-style: italic; font-weight: 600;
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.1; color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+  }
+  .work-card-meta {
+    display: flex; gap: 18px;
+    font-family: var(--sans);
+    font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .work-card-meta .dot {
+    display: inline-block; width: 3px; height: 3px;
+    background: var(--ink-muted); border-radius: 50%;
+    align-self: center;
+  }
+  .work-card-arrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-top: 18px;
+    font-family: var(--sans);
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink);
+    padding-bottom: 3px;
+    border-bottom: 1px solid var(--ink);
+    transition: gap var(--t-fast) var(--ease);
+  }
+  .work-card:hover .work-card-arrow { gap: 18px; }
+
+  /* TEAM */
+  .team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 48px;
+    margin-top: 40px;
+  }
+  .team-member {
+    display: flex; flex-direction: column;
+  }
+  .team-photo {
+    aspect-ratio: 3/4;
+    background: var(--ink);
+    background-size: cover; background-position: center;
+    margin-bottom: 24px;
+    filter: grayscale(15%) contrast(1.02);
+    transition: filter var(--t-med) var(--ease);
+  }
+  .team-member:hover .team-photo { filter: grayscale(0%) contrast(1); }
+  .team-member .eyebrow {
+    font-family: var(--sans);
+    font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 8px;
+  }
+  .team-member h3 {
+    font-family: var(--display);
+    font-style: italic; font-weight: 600;
+    font-size: 30px; line-height: 1;
+    color: var(--ink); margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .team-member .tagline {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .team-member .bio {
+    font-size: 14px; line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .team-member ul {
+    list-style: none;
+    margin-top: auto;
+  }
+  .team-member li {
+    font-family: var(--sans);
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink);
+    padding: 4px 0;
+  }
+  .team-member li::before {
+    content: "· "; color: var(--ink-muted); margin-right: 6px;
+  }
+  .team-close {
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+  }
+  .team-close p {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(22px, 2.4vw, 32px);
+    line-height: 1.4;
+    color: var(--ink-soft);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* CTA — Final word */
+  .cta-section {
+    background: var(--band);
+    color: var(--band-text);
+    padding: 160px 80px;
+    position: relative; z-index: 2;
+    overflow: hidden;
+  }
+  .cta-section .section-label { color: rgba(232, 223, 196, 0.6); }
+  .cta-section .section-label .num { color: var(--band-text); }
+  .cta-headline {
+    font-family: var(--display);
+    font-style: italic; font-weight: 400;
+    font-size: clamp(56px, 9vw, 144px);
+    line-height: 0.95; color: var(--band-text);
+    letter-spacing: -0.02em;
+    margin-bottom: 40px;
+  }
+  .cta-subhead {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(20px, 2vw, 26px);
+    line-height: 1.4;
+    color: var(--band-text);
+    opacity: 0.85;
+    max-width: 760px;
+    margin-bottom: 56px;
+  }
+  .cta-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 24px;
+    max-width: 720px;
+    margin-bottom: 32px;
+  }
+  .cta-form input, .cta-form textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(232, 223, 196, 0.3);
+    padding: 14px 0;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--band-text);
+    transition: border-color var(--t-fast) var(--ease);
+  }
+  .cta-form input:focus, .cta-form textarea:focus {
+    outline: none;
+    border-bottom-color: var(--band-text);
+  }
+  .cta-form textarea {
+    grid-column: 1 / 3;
+    min-height: 90px;
+    resize: vertical;
+  }
+  .cta-form input::placeholder, .cta-form textarea::placeholder {
+    color: rgba(232, 223, 196, 0.5);
+    font-family: var(--sans);
+  }
+  .cta-button {
+    display: inline-flex; align-items: center; gap: 14px;
+    padding: 18px 32px;
+    background: var(--band-text);
+    color: var(--band);
+    text-decoration: none;
+    font-family: var(--sans);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    border: 1px solid var(--band-text);
+    transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+  }
+  .cta-button:hover { background: transparent; color: var(--band-text); }
+
+  .cta-contact {
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(232, 223, 196, 0.2);
+    display: flex; gap: 40px;
+    font-family: var(--sans);
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(232, 223, 196, 0.7);
+  }
+  .cta-contact a { color: var(--band-text); text-decoration: none; }
+
+  /* FOOTER */
+  .footer {
+    padding: 60px 80px 40px;
+    position: relative; z-index: 2;
+    border-top: 1px solid var(--rule);
+  }
+  .footer-top {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 24px;
+  }
+  .footer-trademark {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink-soft);
+  }
+  .footer-trademark .ethos {
+    font-family: var(--sans);
+    font-style: normal;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-left: 14px;
+    padding-left: 14px;
+    border-left: 1px solid var(--rule);
+  }
+  .footer-bottom {
+    display: flex; justify-content: space-between;
+    font-family: var(--sans);
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .footer-bottom a { color: var(--ink); text-decoration: none; }
+
+  /* REVEALS — default to visible. JS adds .observed to hide before observer fires.
+     Failsafe: if JS fails or IO never fires, content stays visible. */
+  .reveal {
+    opacity: 1; transform: translateY(0);
+    transition: opacity var(--t-slow) var(--ease), transform var(--t-slow) var(--ease);
+  }
+  .reveal.observed { opacity: 0; transform: translateY(30px); }
+  .reveal.observed.in,
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding: 140px 32px 60px; }
+    .hero-aside { padding-left: 0; border-left: none; border-top: 1px solid var(--rule); padding-top: 32px; }
+    .section { padding: 100px 32px; }
+    .philosophy-grid { grid-template-columns: 1fr; gap: 48px; }
+    .capability { grid-template-columns: 60px 1fr; }
+    .capability p { grid-column: 1 / 3; }
+    .work-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: 1fr; }
+    .cta-section { padding: 100px 32px; }
+    .cta-form { grid-template-columns: 1fr; }
+    .cta-form textarea { grid-column: 1; }
+    .footer { padding: 40px 32px; }
+    .nav { padding: 20px 32px; }
+    .fl-tl, .fl-tr, .fl-bl, .fl-br { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<!-- HUD FRAME LABELS — editorial dialect per spec (no SYSTEM language) -->
+<div class="frame-label fl-tl">HAUS OF SÔS · THE COLLECTIVE</div>
+<div class="frame-label fl-tr">LUXURY · CULTURE · CONTENT</div>
+<div class="frame-label fl-bl">EST. 2018 · LA + NY</div>
+<div class="frame-label fl-br">EDITION · MAY 2026</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a class="nav-mark" href="#" aria-label="HAUS OF SÔS">
+    <img src="assets/logos/hos-wordmark-dark-trimmed.png" alt="HAUS OF SÔS">
+    <span class="sub">EST. 2018</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#capabilities">Capabilities</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- MOMENT 01 · THE STATEMENT — Editorial asymmetric headline. -->
+<section class="moment-statement">
+  <div class="meta-row">
+    <div class="eyebrow">
+      <span class="brand-asset"><span class="dot"></span>The Collective</span>
+      <span class="sub-tag">Built for brands that compound · LA + NY</span>
+    </div>
+    <div class="meta-right">
+      <span>2026.05</span>
+      <span>Issue No. 01</span>
+    </div>
+  </div>
+
+  <h1 class="headline ink-drying" id="splash-headline">Brand identity. Campaign worlds. Cinematic content. Creator infrastructure. Built to compound.</h1>
+
+  <div class="footer-row">
+    <span class="scroll-indicator">Scroll · The Receipt</span>
+    <span>Featured · Clé de Peau × Martha Stewart</span>
+  </div>
+</section>
+
+<!-- MOMENT 02 · THE RECEIPT — Full-bleed cinematic moment. -->
+<section class="moment-receipt">
+  <video class="visual" autoplay muted loop playsinline poster="" preload="auto">
+    <source src="assets/video/hero-loop.mp4" type="video/mp4">
+  </video>
+  <div class="frame-top">
+    <div class="left-tag">Clé de Peau Beauté × Martha Stewart</div>
+    <div>Frame · 001 / 14</div>
+  </div>
+  <div class="frame-bottom">
+    <div class="proof">↳ #1 Selling Concealer · U.S. · The brand's most awarded campaign</div>
+    <div class="frame-folio">HAUS OF SÔS · The Receipt</div>
+  </div>
+</section>
+
+<!-- MOMENT 03 · THE NUMBERS — Cream gallery moment for the marquee stats. -->
+<section class="moment-numbers">
+  <div class="label"><span class="num">§ 01</span>The Outcomes · Clé de Peau × Martha Stewart</div>
+  <div class="moment-numbers-grid">
+    <div class="stat">
+      <span class="n">3B+</span>
+      <span class="l">Earned media impressions across 43 press placements</span>
+    </div>
+    <div class="stat">
+      <span class="n">78M</span>
+      <span class="l">Total views across TikTok and Instagram</span>
+    </div>
+    <div class="stat">
+      <span class="n">222%</span>
+      <span class="l">Above beauty category benchmark in brand lift (Kantar)</span>
+    </div>
+    <div class="stat">
+      <span class="n">#1</span>
+      <span class="l">Selling concealer in category · United States · February 2022</span>
+    </div>
+  </div>
+  <div class="closer">
+    <div class="credit">The most successful U.S. market campaign Clé de Peau Beauté has ever run.</div>
+    <div class="source">Source · Kantar / NPD / Client</div>
+  </div>
+</section>
+
+<!-- MOMENT 04 · THE ROSTER — Logo bar + primary CTA in editorial-italic. -->
+<section class="moment-roster">
+  <div class="moment-roster-inner">
+    <div class="label" style="grid-column: 1 / 3;"><span class="num">§ 02</span>Selected Brand Roster</div>
+    <div class="logos">
+      Clé de Peau Beauté<span class="sep">·</span>M·A·C<span class="sep">·</span>Shiseido<span class="sep">·</span>Burberry<span class="sep">·</span>Fontainebleau<span class="sep">·</span>Mondrian<span class="sep">·</span>Mother Wolf
+    </div>
+    <div class="cta-block">
+      <div class="cta-eyebrow">↳ Primary Path</div>
+      <a class="cta" href="#work">See the work <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- Splash Edition Footer — mandate + edition stamp -->
+<div class="splash-edition">
+  <div class="mandate">Always Be Saucy.</div>
+  <div class="edition">Edition · May 2026 · Los Angeles + New York</div>
+</div>
+
+<!-- CHAPTER BREAK 01 — Always Be Saucy mantra. Gallery stillness moment. -->
+<section class="chapter-break dark">
+  <div class="eyebrow reveal">§ The Mandate</div>
+  <div class="mantra reveal">
+    <span class="line">Always</span>
+    <span class="line">Be Saucy.</span>
+  </div>
+  <div class="sub reveal">The creative ethos that powers HAUS OF SÔS</div>
+</section>
+
+<!-- SECTION 02 · THE DNA -->
+<section class="section" id="philosophy">
+  <div class="section-label reveal"><span class="num">§ 02</span>The Philosophy of the Haus</div>
+  <div class="philosophy-grid">
+    <div class="philosophy-pillar reveal">
+      <span class="num">01 / Pedigree, Operationalized</span>
+      <h3>Twenty-five years inside the rooms.</h3>
+      <p>MAC Cosmetics, Estée Lauder, Bumble and bumble, Clé de Peau Beauté, Whalar, and Deutsch NY built the strategic systems we deploy now. Senior judgment from the first conversation. No translation losses on the way to execution.</p>
+      <div class="value">The strategic depth of a global creative system delivered with the intimacy of a private studio.</div>
+    </div>
+    <div class="philosophy-pillar reveal">
+      <span class="num">02 / Cultural Fluency</span>
+      <h3>Inside the intersection.</h3>
+      <p>We do not observe culture from a distance. We operate inside the intersection of fashion, luxury, and social-native storytelling.</p>
+      <div class="value">Your brand sounds like it belongs in culture, not next to it. Respect earned at first contact.</div>
+    </div>
+    <div class="philosophy-pillar reveal">
+      <span class="num">03 / Integrated, Not Handed Off</span>
+      <h3>One vision through the pipeline.</h3>
+      <p>Strategy, content, and creator systems sit in one room. The brief travels from initial conversation to final execution without translation losses.</p>
+      <div class="value">One vision held through the entire pipeline. Zero dilution between the strategic intent and the work that ships.</div>
+    </div>
+    <div class="philosophy-pillar reveal">
+      <span class="num">04 / Refined Urgency</span>
+      <h3>Luxury at the speed of momentum.</h3>
+      <p>Luxury lives in the details. Momentum compounds at speed. HAUS OF SÔS delivers both, on a timeline that respects the pace of modern business.</p>
+      <div class="value">Premium work without standard agency lag. Sprint cadence at studio quality.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 03 · CAPABILITIES -->
+<section class="section" id="capabilities">
+  <div class="section-label reveal"><span class="num">§ 03</span>Bespoke Creative Solutions</div>
+  <p class="work-intro reveal" style="margin-bottom:48px;"><strong style="font-style: normal; font-weight: 700; font-family: var(--sans); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;">HAUS OF SÔS</strong> provides brand concept and brand development, advertising and campaign production, film and video production, photography, multimedia entertainment services, and endorsement services for premium brands.</p>
+  <div class="capabilities-list">
+    <div class="capability reveal">
+      <span class="num">01</span>
+      <h3>Brand Identity &amp; Verbal Architecture</h3>
+      <p>The strategic naming, positioning, visual direction, and brand voice that determine what the market thinks before anyone in the room speaks.</p>
+    </div>
+    <div class="capability reveal">
+      <span class="num">02</span>
+      <h3>Campaign Architecture &amp; World-Building</h3>
+      <p>Narrative platforms built to operate across social, creator, and experiential channels with no version drift. One story. Every surface. Every cadence.</p>
+    </div>
+    <div class="capability reveal">
+      <span class="num">03</span>
+      <h3>Cinematic Content &amp; Production Excellence</h3>
+      <p>Luxury vertical video and editorial photography produced to standards usually reserved for theatrical campaigns. Earns the attention. Holds it.</p>
+    </div>
+    <div class="capability reveal">
+      <span class="num">04</span>
+      <h3>Creator-Led Infrastructure</h3>
+      <p>Creator collaborations and content systems designed so the brand keeps shipping at scale long after the campaign ends. The voices your audience already trusts. Built into your distribution.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER BREAK 02 — Always Be Saucy · cream variant. -->
+<section class="chapter-break cream">
+  <div class="eyebrow reveal">§ The Standard</div>
+  <div class="mantra reveal">
+    <span class="line">Always</span>
+    <span class="line">Be Saucy.</span>
+  </div>
+  <div class="sub reveal">A discipline. Not a slogan.</div>
+</section>
+
+<!-- SECTION 04 · SELECTED WORK -->
+<section class="section" id="work">
+  <div class="section-label reveal"><span class="num">§ 04</span>Selected Work</div>
+  <p class="work-intro reveal">Selected work delivered by <strong style="font-style: normal; font-weight: 700; font-family: var(--sans); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;">HAUS OF SÔS</strong> for clients across luxury beauty, hospitality, and entertainment, alongside campaigns developed under Ashley Rudder's tenure as the first Chief Creator Officer in advertising. Recognized by Cannes Lions, D&amp;AD, the Webby Awards, Clio, and the Shorty Awards.</p>
+
+  <div class="work-grid">
+
+    <!-- SUBSECTION: CINEMATIC CONTENT (video case studies) -->
+    <div class="work-subsection reveal">
+      <div class="sub-eyebrow"><span class="num">§ 04.A</span>Cinematic Content</div>
+      <div class="sub-title">Campaigns built for the&nbsp;screen.</div>
+    </div>
+
+    <a class="work-card video reveal" href="case-studies/martha-cle-de-peau.html">
+      <div class="work-card-image">
+        <div class="visual" style="background-image: linear-gradient(135deg, rgba(20,30,40,0.18) 0%, rgba(80,40,30,0.32) 50%, rgba(180,120,80,0.18) 100%), radial-gradient(ellipse at 30% 40%, rgba(220,180,140,0.4) 0%, rgba(40,30,20,0.7) 80%);"></div>
+        <div class="corner">CLÉ DE PEAU × MARTHA</div>
+      </div>
+      <div class="work-card-eyebrow">Martha × Clé de Peau Beauté · "The Thirst Trap"</div>
+      <h3 class="work-card-title">She was already iconic. We just let the internet catch&nbsp;up.</h3>
+      <div class="work-card-meta"><span>Celebrity × Luxury Beauty</span><span class="dot"></span><span>Content · Strategy · Production</span></div>
+      <span class="work-card-arrow">View Case Study →</span>
+    </a>
+
+    <a class="work-card video reveal" href="case-studies/lactaid-la-la.html">
+      <div class="work-card-image">
+        <div class="visual" style="background-image: linear-gradient(135deg, rgba(255,245,220,0.4) 0%, rgba(220,180,140,0.3) 100%), radial-gradient(ellipse at 60% 30%, rgba(255,220,160,0.5) 0%, rgba(80,60,40,0.6) 80%);"></div>
+        <div class="corner">LACTAID · DEUTSCH NY</div>
+      </div>
+      <div class="work-card-eyebrow">Lactaid · "La La Lactaid"</div>
+      <h3 class="work-card-title">A brand built on restriction learned to sing about&nbsp;joy.</h3>
+      <div class="work-card-meta"><span>Musical Brand Platform</span><span class="dot"></span><span>Campaign · TV · Social</span></div>
+      <span class="work-card-arrow">View Case Study →</span>
+    </a>
+
+    <!-- SUBSECTION: BRAND WORLDS (design case studies) -->
+    <div class="work-subsection reveal">
+      <div class="sub-eyebrow"><span class="num">§ 04.B</span>Brand Worlds</div>
+      <div class="sub-title">Identities people walk&nbsp;into.</div>
+    </div>
+
+    <a class="work-card design reveal" href="#case-heatwaves">
+      <div class="work-card-image">
+        <div class="visual" style="background-image: url('assets/work/heatwaves.png');"></div>
+        <div class="corner" style="color: #FFE5DC; border-color: rgba(255,229,220,0.6);">VIRGIN HOTELS · DALLAS</div>
+      </div>
+      <div class="work-card-eyebrow">Virgin Hotels Dallas · The Pool Club</div>
+      <h3 class="work-card-title">A weekend ritual that ships&nbsp;itself.</h3>
+      <div class="work-card-meta"><span>Hospitality × Brand System</span><span class="dot"></span><span>Identity · Print · Motion</span></div>
+      <span class="work-card-arrow">View Case Study →</span>
+    </a>
+
+    <a class="work-card design reveal" href="#case-thechap">
+      <div class="work-card-image">
+        <div class="visual" style="background-image: url('assets/work/the-chap.png');"></div>
+        <div class="corner" style="color: #E8E2C9; border-color: rgba(232,226,201,0.6);">THE CHAP · LOS ANGELES</div>
+      </div>
+      <div class="work-card-eyebrow">The Chap · Public House · Cahuenga Blvd</div>
+      <h3 class="work-card-title">An old-world public house with a brand to&nbsp;match.</h3>
+      <div class="work-card-meta"><span>Hospitality × Heritage Identity</span><span class="dot"></span><span>Illustration · Print · Pub System</span></div>
+      <span class="work-card-arrow">View Case Study →</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- SECTION 05 · THE VISIONARIES -->
+<section class="section" id="team">
+  <div class="section-label reveal"><span class="num">§ 05</span>The Visionaries</div>
+  <div class="team-grid">
+    <div class="team-member reveal">
+      <div class="team-photo" style="background-image: url('assets/team/ashley.jpg');"></div>
+      <div class="eyebrow">Co-Founder &amp; Chief Creator Officer</div>
+      <h3>Ashley Rudder</h3>
+      <div class="tagline">Where strategy becomes culture.</div>
+      <p class="bio">Ashley Rudder defined the role of Chief Creator Officer before the industry had words for it. Twenty-five years inside M·A·C Cosmetics, Estée Lauder Companies, Bumble and bumble, Whalar, and Deutsch NY. She architects the proprietary IP behind the collective: Creator Darwinism, Cultural Jetstream, and The CCO Thesis.</p>
+      <ul>
+        <li>Two-time Cannes Lions Keynote Speaker</li>
+        <li>D&amp;AD Jury President</li>
+        <li>Ad Age Leading Woman</li>
+      </ul>
+    </div>
+
+    <div class="team-member reveal">
+      <div class="team-photo" style="background-image: url('assets/team/captain-jack.png');"></div>
+      <div class="eyebrow">Co-Founder &amp; President</div>
+      <h3>Captain Jack Rudder</h3>
+      <div class="tagline">Building worlds people refuse to leave.</div>
+      <p class="bio">Jack Rudder is the visual architect behind the most photographed, culturally dominant hospitality spaces in America. Mother Wolf (Miami, Las Vegas, LA), Bar Lis, Desert 5 Spot, Fontainebleau Las Vegas, and Mondrian's Baia Beach Club. Beyond spatial design, he has engineered global brand worlds for Burberry, Shiseido, Apple, and REVOLVE.</p>
+      <ul>
+        <li>Featured in The New York Times</li>
+        <li>Featured in Vogue</li>
+        <li>Featured in Forbes &amp; Rolling Stone</li>
+      </ul>
+    </div>
+
+    <div class="team-member reveal">
+      <div class="team-photo" style="background-image: url('assets/team/coco.jpg');"></div>
+      <div class="eyebrow">Co-Founder &amp; Head of Content Production</div>
+      <h3>Coco Rudder</h3>
+      <div class="tagline">The luxury lens culture actually trusts.</div>
+      <p class="bio">Coco operates at the intersection of native social intuition and ultra-luxury execution. A directional force behind the camera and a prominent face in front of it, she has modeled for Prada, Dior Beauty, and Chanel Beauty under IMG and Wilhelmina. Her directorial debut for Clé de Peau Beauté × Martha Stewart generated 3B impressions and 78M views.</p>
+      <ul>
+        <li>IMG &amp; Wilhelmina Models</li>
+        <li>Director · Clé de Peau × Martha</li>
+        <li>3B Impressions · 78M Views</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="team-close reveal">
+    <p>We are a family that builds brands the way we live. With taste, urgency, and zero tolerance for anything that does not earn its place.</p>
+  </div>
+</section>
+
+<!-- SECTION 06 · CTA -->
+<section class="cta-section" id="contact">
+  <div class="section-label reveal"><span class="num">§ 06</span>The Final Word</div>
+  <h2 class="cta-headline ink-drying" id="cta-headline">Define Your Next Chapter.</h2>
+  <p class="cta-subhead reveal">Premium brands come to HAUS OF SÔS to build the creative system behind the work they intend to be known for. Bring the ambition. We bring the system.</p>
+
+  <form class="cta-form reveal" onsubmit="event.preventDefault(); alert('Form is a POC. Wire to your inbox before launch.');">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="company" placeholder="Company" style="grid-column: 1 / 3;">
+    <textarea name="message" placeholder="Tell us about the brand and the ambition." required></textarea>
+  </form>
+
+  <button class="cta-button reveal">Start the Conversation →</button>
+
+  <div class="cta-contact reveal">
+    <span>Direct · <a href="mailto:hello@hausofsos.com">hello@hausofsos.com</a></span>
+    <span>Studio · Los Angeles</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-trademark">Always Be Saucy™ <span class="ethos">The creative ethos that powers HAUS OF SÔS™</span></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 HAUS OF SÔS · A Super Saucy LLC Company</span>
+    <span><a href="mailto:hello@hausofsos.com">hello@hausofsos.com</a></span>
+  </div>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  let cursorX = 0, cursorY = 0, mouseX = 0, mouseY = 0;
+  document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+  function animateCursor() {
+    cursorX += (mouseX - cursorX) * 0.2;
+    cursorY += (mouseY - cursorY) * 0.2;
+    cursor.style.transform = 'translate(' + cursorX + 'px, ' + cursorY + 'px) translate(-50%, -50%)';
+    requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+  });
+
+  // Ink Drying In — safe DOM splitting. Spaces use   (non-breaking)
+  // so inline-block spans don't collapse them.
+  function inkDryingIn(el, delayBase, startDelay) {
+    delayBase = delayBase || 30;
+    startDelay = startDelay || 200;
+    const text = el.textContent;
+    while (el.firstChild) el.removeChild(el.firstChild);
+    const words = text.split(' ');
+    let charIndex = 0;
+    words.forEach((word, wordIdx) => {
+      const wordSpan = document.createElement('span');
+      wordSpan.style.display = 'inline-block';
+      wordSpan.style.whiteSpace = 'nowrap';
+      Array.from(word).forEach((char) => {
+        const span = document.createElement('span');
+        span.textContent = char;
+        span.style.animationDelay = (startDelay + charIndex * delayBase) + 'ms';
+        wordSpan.appendChild(span);
+        charIndex++;
+      });
+      el.appendChild(wordSpan);
+      if (wordIdx < words.length - 1) {
+        el.appendChild(document.createTextNode(' '));
+        charIndex++;
+      }
+    });
+  }
+  inkDryingIn(document.getElementById('hero-headline'));
+
+  // CTA + Mantra trigger on scroll
+  const triggerInkDrying = (el, opts) => {
+    opts = opts || {};
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          inkDryingIn(entry.target, opts.delayBase || 30, opts.startDelay || 100);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: opts.threshold || 0.3 });
+    obs.observe(el);
+  };
+  triggerInkDrying(document.getElementById('cta-headline'));
+  // Splash headline ink-drying triggers on load
+  inkDryingIn(document.getElementById('splash-headline'), 18, 800);
+
+  // Scroll reveals — hide-then-fade pattern. Content defaults to visible in CSS;
+  // we add .observed here so JS hides it before the observer fades it in.
+  // If IntersectionObserver fails to fire, content stays visible.
+  if ('IntersectionObserver' in window) {
+    const reveals = document.querySelectorAll('.reveal');
+    reveals.forEach(el => el.classList.add('observed'));
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('in'), i * 60);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // Watchdog: any .observed element still not .in after 6s gets force-revealed.
+    // Protects against tabs that load while backgrounded or observer hiccups.
+    setTimeout(() => {
+      document.querySelectorAll('.reveal.observed:not(.in)').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) el.classList.add('in');
+      });
+    }, 6000);
+  }
+
+  // Nav scroll state
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+
+</script>
+
+</body>
+</html>
