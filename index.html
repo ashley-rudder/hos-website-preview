@@ -323,100 +323,144 @@
     margin-bottom: 80px;
   }
 
-  /* Editorial stock ticker */
-  .ticker-frame {
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-    padding: 32px 24px 24px;
-    max-width: 1180px;
+  /* ============================================ */
+  /* EDITORIAL LIVE TICKER · sheer parallax tape   */
+  /* Full-width horizontal infinite scroll · glass */
+  /* ============================================ */
+  .ticker-header-bar {
+    max-width: 1480px;
     margin: 0 auto;
-    background: var(--bg-deep);
-  }
-  .ticker-header {
+    padding: 0 24px 18px;
     display: flex; justify-content: space-between; align-items: baseline;
-    padding-bottom: 18px;
-    border-bottom: 1px solid var(--rule);
-    margin-bottom: 18px;
     font-family: var(--sans);
-    font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+    font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
     color: var(--ink-muted);
   }
-  .ticker-header .live {
+  .ticker-header-bar .label .num {
+    color: var(--accent); font-weight: 700;
+    margin-right: 10px;
+  }
+  .ticker-header-bar .live {
     display: flex; align-items: center; gap: 10px;
     color: var(--accent);
     font-weight: 700;
   }
-  .ticker-header .live .pulse {
+  .ticker-header-bar .live .pulse {
     width: 8px; height: 8px; border-radius: 50%;
     background: var(--accent);
     animation: tickerPulse 2s ease infinite;
+    box-shadow: 0 0 14px rgba(194,65,12,0.5);
   }
   @keyframes tickerPulse {
     0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.4); opacity: 0.5; }
+    50% { transform: scale(1.5); opacity: 0.45; }
   }
-  .ticker-rows {
-    display: flex; flex-direction: column;
+
+  /* The ticker tape itself — full-bleed, sheer, glassy */
+  .ticker-tape {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);   /* break out of parent padding */
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(
+      180deg,
+      rgba(243, 237, 216, 0.35) 0%,
+      rgba(236, 227, 202, 0.55) 50%,
+      rgba(243, 237, 216, 0.35) 100%
+    );
+    backdrop-filter: blur(10px) saturate(110%);
+    -webkit-backdrop-filter: blur(10px) saturate(110%);
+    border-top: 1px solid rgba(32, 34, 33, 0.08);
+    border-bottom: 1px solid rgba(32, 34, 33, 0.08);
+    padding: 32px 0;
   }
-  .ticker-row {
-    display: grid;
-    grid-template-columns: 28px 1fr auto 90px 180px;
+  /* Sheer fades at both edges so items appear/disappear softly */
+  .ticker-tape::before,
+  .ticker-tape::after {
+    content: "";
+    position: absolute; top: 0; bottom: 0;
+    width: 18vw; min-width: 120px;
+    z-index: 3; pointer-events: none;
+  }
+  .ticker-tape::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg) 0%, rgba(243,237,216,0) 100%);
+  }
+  .ticker-tape::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg) 0%, rgba(243,237,216,0) 100%);
+  }
+  .ticker-track {
+    display: inline-flex;
+    white-space: nowrap;
     align-items: center;
-    gap: 24px;
-    padding: 22px 4px;
-    border-bottom: 1px dashed rgba(216,207,179,0.6);
-    transition: background 0.3s var(--ease);
+    gap: 64px;
+    will-change: transform;
+    animation: tickerScroll 38s linear infinite;
+    padding: 0 32px;
   }
-  .ticker-row:last-child { border-bottom: none; }
-  .ticker-row:hover { background: rgba(194,65,12,0.04); }
-  .ticker-row .symbol {
+  .ticker-tape:hover .ticker-track { animation-play-state: paused; }
+  @keyframes tickerScroll {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+  }
+  .ticker-item {
+    display: inline-flex; align-items: center; gap: 18px;
+    padding: 0 16px;
+  }
+  .ticker-item .symbol {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    letter-spacing: 0.04em;
+    font-size: 12px;
+    letter-spacing: 0.16em;
     color: var(--ink-muted);
     font-weight: 700;
+    padding: 4px 8px;
+    border: 1px solid rgba(122, 120, 114, 0.3);
   }
-  .ticker-row .name {
+  .ticker-item .name {
     font-family: var(--display);
     font-style: italic;
     font-weight: 500;
-    font-size: clamp(24px, 2.4vw, 38px);
-    line-height: 1.1;
+    font-size: clamp(22px, 2.4vw, 38px);
+    line-height: 1;
     color: var(--ink);
-    letter-spacing: -0.012em;
+    letter-spacing: -0.015em;
   }
-  .ticker-row .arrow {
+  .ticker-item .arrow {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1;
     color: var(--accent);
     font-weight: 700;
-    display: inline-block;
-    transform: translateY(-2px);
+    transform: translateY(-1px);
   }
-  .ticker-row .stat {
+  .ticker-item .stat {
     font-family: 'JetBrains Mono', monospace;
     font-size: 17px;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.04em;
     color: var(--accent);
     font-weight: 700;
-    text-align: right;
   }
-  .ticker-row .index {
+  .ticker-item .index {
     font-family: var(--sans);
     font-size: 10px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--ink-muted);
-    text-align: right;
+    border-left: 1px solid rgba(122,120,114,0.3);
+    padding-left: 16px;
   }
-  .ticker-row.feature {
-    background: var(--bg);
+  .ticker-divider {
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--accent);
+    opacity: 0.35;
+    font-size: 10px;
   }
-  .ticker-footer {
-    margin-top: 18px;
-    padding-top: 18px;
-    border-top: 1px solid var(--rule);
+  /* The footer caption beneath the tape */
+  .ticker-caption {
+    max-width: 1480px;
+    margin: 18px auto 0;
+    padding: 0 24px;
     display: flex; justify-content: space-between;
     font-family: var(--sans);
     font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
@@ -1292,38 +1336,102 @@
     <h1 class="headline">The&nbsp;Collective.</h1>
     <div class="byline">Built for brands to&nbsp;compound.</div>
 
-    <div class="ticker-frame">
-      <div class="ticker-header">
-        <span>HOS · Discipline Index</span>
-        <span class="live"><span class="pulse"></span>Live · Compounding</span>
-      </div>
-      <div class="ticker-rows">
-        <div class="ticker-row">
+    <div class="ticker-header-bar">
+      <span class="label"><span class="num">§</span>HOS · Discipline Index</span>
+      <span class="live"><span class="pulse"></span>Live · Compounding</span>
+    </div>
+
+    <div class="ticker-tape" aria-label="Live HOS Discipline Index">
+      <div class="ticker-track">
+        <!-- Copy A -->
+        <span class="ticker-item">
           <span class="symbol">CIN</span>
           <span class="name">Cinematic Content</span>
           <span class="arrow">▲</span>
           <span class="stat">+12.4%</span>
           <span class="index">Attention Index</span>
-        </div>
-        <div class="ticker-row feature">
+        </span>
+        <span class="ticker-divider">◆</span>
+        <span class="ticker-item">
           <span class="symbol">CMP</span>
           <span class="name">Campaign Worlds</span>
           <span class="arrow">▲</span>
           <span class="stat">+08.7%</span>
           <span class="index">Compound Index</span>
-        </div>
-        <div class="ticker-row">
+        </span>
+        <span class="ticker-divider">◆</span>
+        <span class="ticker-item">
           <span class="symbol">CRI</span>
           <span class="name">Creator Infrastructure</span>
           <span class="arrow">▲</span>
           <span class="stat">+14.2%</span>
           <span class="index">Distribution Index</span>
-        </div>
+        </span>
+        <span class="ticker-divider">◆</span>
+        <span class="ticker-item">
+          <span class="symbol">BRD</span>
+          <span class="name">Brand Identity</span>
+          <span class="arrow">▲</span>
+          <span class="stat">+09.6%</span>
+          <span class="index">Position Index</span>
+        </span>
+        <span class="ticker-divider">◆</span>
+        <span class="ticker-item">
+          <span class="symbol">PRD</span>
+          <span class="name">Production Excellence</span>
+          <span class="arrow">▲</span>
+          <span class="stat">+11.1%</span>
+          <span class="index">Craft Index</span>
+        </span>
+        <span class="ticker-divider">◆</span>
+
+        <!-- Copy B · seamless loop -->
+        <span class="ticker-item">
+          <span class="symbol">CIN</span>
+          <span class="name">Cinematic Content</span>
+          <span class="arrow">▲</span>
+          <span class="stat">+12.4%</span>
+          <span class="index">Attention Index</span>
+        </span>
+        <span class="ticker-divider">◆</span>
+        <span class="ticker-item">
+          <span class="symbol">CMP</span>
+          <span class="name">Campaign Worlds</span>
+          <span class="arrow">▲</span>
+          <span class="stat">+08.7%</span>
+          <span class="index">Compound Index</span>
+        </span>
+        <span class="ticker-divider">◆</span>
+        <span class="ticker-item">
+          <span class="symbol">CRI</span>
+          <span class="name">Creator Infrastructure</span>
+          <span class="arrow">▲</span>
+          <span class="stat">+14.2%</span>
+          <span class="index">Distribution Index</span>
+        </span>
+        <span class="ticker-divider">◆</span>
+        <span class="ticker-item">
+          <span class="symbol">BRD</span>
+          <span class="name">Brand Identity</span>
+          <span class="arrow">▲</span>
+          <span class="stat">+09.6%</span>
+          <span class="index">Position Index</span>
+        </span>
+        <span class="ticker-divider">◆</span>
+        <span class="ticker-item">
+          <span class="symbol">PRD</span>
+          <span class="name">Production Excellence</span>
+          <span class="arrow">▲</span>
+          <span class="stat">+11.1%</span>
+          <span class="index">Craft Index</span>
+        </span>
+        <span class="ticker-divider">◆</span>
       </div>
-      <div class="ticker-footer">
-        <span>HOS Discipline Index · The Collective · LA + NY</span>
-        <span>Source · The Receipts</span>
-      </div>
+    </div>
+
+    <div class="ticker-caption">
+      <span>HOS Discipline Index · The Collective · LA + NY</span>
+      <span>Source · The Receipts · Auto-refreshing</span>
     </div>
   </div>
 
