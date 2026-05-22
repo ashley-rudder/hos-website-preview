@@ -955,6 +955,30 @@
   .work-card.design .work-card-image .visual {
     background-size: cover; background-position: center;
   }
+  /* Hero variant — solo card spans full row width, landscape proportions */
+  .work-card.design.hero {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .work-card.design.hero .work-card-image {
+    aspect-ratio: 16/9;
+    margin-bottom: 0;
+  }
+  .work-card.design.hero .work-card-image .visual {
+    background-position: center 30%;
+  }
+  .work-card.design.hero .work-card-eyebrow { margin-bottom: 14px; }
+  .work-card.design.hero .work-card-title {
+    font-size: clamp(28px, 3.4vw, 48px);
+    margin-bottom: 20px;
+  }
+  @media (max-width: 880px) {
+    .work-card.design.hero { grid-template-columns: 1fr; gap: 24px; }
+    .work-card.design.hero .work-card-image { aspect-ratio: 9/16; }
+  }
   /* Video-style cards: motion hint glyph */
   .work-card.video .work-card-image::after {
     content: "";
@@ -1618,7 +1642,7 @@
       <div class="sub-title">Identities people walk&nbsp;into.</div>
     </div>
 
-    <a class="work-card design reveal" href="#case-heatwaves">
+    <a class="work-card design hero reveal" href="#case-heatwaves">
       <div class="work-card-image">
         <div class="visual" style="background-image: url('assets/work/heatwaves.png');"></div>
         <div class="corner" style="color: #FFE5DC; border-color: rgba(255,229,220,0.6);">VIRGIN HOTELS · DALLAS</div>
@@ -1626,17 +1650,6 @@
       <div class="work-card-eyebrow">Virgin Hotels Dallas · The Pool Club</div>
       <h3 class="work-card-title">A weekend ritual that ships&nbsp;itself.</h3>
       <div class="work-card-meta"><span>Hospitality × Brand System</span><span class="dot"></span><span>Identity · Print · Motion</span></div>
-      <span class="work-card-arrow">View Case Study →</span>
-    </a>
-
-    <a class="work-card design reveal" href="#case-thechap">
-      <div class="work-card-image">
-        <div class="visual" style="background-image: url('assets/work/the-chap.png');"></div>
-        <div class="corner" style="color: #E8E2C9; border-color: rgba(232,226,201,0.6);">THE CHAP · LOS ANGELES</div>
-      </div>
-      <div class="work-card-eyebrow">The Chap · Public House · Cahuenga Blvd</div>
-      <h3 class="work-card-title">An old-world public house with a brand to&nbsp;match.</h3>
-      <div class="work-card-meta"><span>Hospitality × Heritage Identity</span><span class="dot"></span><span>Illustration · Print · Pub System</span></div>
       <span class="work-card-arrow">View Case Study →</span>
     </a>
 
